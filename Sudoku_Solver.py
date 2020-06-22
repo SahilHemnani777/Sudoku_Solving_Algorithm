@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Shebang line (for LINUX)"""
+#Shebang line (for LINUX)
 board = [
     [7,8,0,4,0,0,1,2,0],
     [6,0,0,0,7,5,0,0,9],
@@ -12,9 +12,30 @@ board = [
     [0,4,9,2,0,6,0,0,7]
 ]
 
-"""Function to check if the number we pass is valid or not
-return True if the number is valid
-return Flase if the number is not valid"""
+#Function to Backtrack and solve the board [Main function]
+
+def solve(bo):
+    #basecase
+    find=find_empty(bo)
+    if not find: #if there are  no empty boxses (base case of recursion)
+        return True
+    else:
+        row, col=find
+
+    for i in range(1, 10):
+        if valid(bo, i, (row, col)):
+            bo[row][col]=i
+
+            if solve():
+                return True
+
+            bo[row][col]=0
+    return False
+
+
+#Function to check if the number we pass is valid or not
+#return True if the number is valid
+#return Flase if the number is not valid"""
 
 def valid(bo, num, pos):
     #check Rows
@@ -36,7 +57,8 @@ def valid(bo, num, pos):
     return True
 
 
-"""Function to Print Board in Sudoku style"""
+#Function to Print Board in Sudoku style
+
 def print_board(bo):
     for i in range(len(bo)):
         if i%3==0 and i!=0:
@@ -51,10 +73,11 @@ def print_board(bo):
 
 print_board(board)
 
-"""Function to find the index of empty box in the puzzle"""
+#Function to find the index of empty box in the puzzle
+
 def find_empty(bo):
     for i in range(leb(bo)):
         for j in range(len(bo[o])):
             if bo[i][j]==0:
                 return (i,j) #row,coloum
-    return None 
+    return None
