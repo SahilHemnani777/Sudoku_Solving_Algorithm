@@ -26,7 +26,7 @@ def solve(bo):
         if valid(bo, i, (row, col)):
             bo[row][col]=i
 
-            if solve():
+            if solve(board):
                 return True
 
             bo[row][col]=0
@@ -39,12 +39,12 @@ def solve(bo):
 
 def valid(bo, num, pos):
     #check Rows
-    for i in range(len(bo[o])):
+    for i in range(len(bo[0])):
         if bo[pos[0]][i]==num and i!=pos[1]:
             return False
     #check coloum
     for i in range(len(bo[0])):
-        if bo[i][bo[1]]==num and i!=bo[0]:
+        if bo[i][pos[1]]==num and i!=pos[0]:
             return False
     #check box(3x3)
     box_x=pos[1]//3
@@ -70,14 +70,20 @@ def print_board(bo):
                 print(str(bo[i][j]))
             else:
                 print(str(bo[i][j]) + " ", end="")
-
+print("Unsolved SUDOKU")
 print_board(board)
 
 #Function to find the index of empty box in the puzzle
 
 def find_empty(bo):
-    for i in range(leb(bo)):
-        for j in range(len(bo[o])):
+    for i in range(len(bo)):
+        for j in range(len(bo[0])):
             if bo[i][j]==0:
                 return (i,j) #row,coloum
     return None
+
+solve(board)
+print("___________________________")
+print("                           ")
+print("Solved SUDOKU")
+print(print_board(board))
