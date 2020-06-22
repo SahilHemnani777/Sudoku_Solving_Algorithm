@@ -57,3 +57,4 @@ def find_empty(bo):
         for j in range(len(bo[o])):
             if bo[i][j]==0:
                 return (i,j) #row,coloum
+    return None 
