@@ -29,13 +29,13 @@ def valid(bo, num, pos):
     box_x=pos[1]//3
     box_y=pos[0]//3
 
-    for i in range(box_x*3, box_x*3 + 3):    #itterating through rows
-        for j in range(box_y*3, box_y*3 + 3):
+    for i in range(box_y*3, box_y*3 + 3):    #itterating through rows
+        for j in range(box_x*3, box_x*3 + 3):
             if bo[i][j]==num and (i, j)!=pos:
                 return False
     return True
 
-        
+
 """Function to Print Board in Sudoku style"""
 def print_board(bo):
     for i in range(len(bo)):
