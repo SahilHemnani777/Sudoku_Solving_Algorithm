@@ -1,4 +1,4 @@
-# Sudoku_Solver_Algorithm
+# Sudoku_Solving_Algorithm
 Algorithm Used: BackTracking Algorithm
 Steps : [WORKFLOW]
 1.pick the emopty block (0)
